@@ -8,7 +8,7 @@ from google.oauth2.credentials import Credentials
 
 genai.configure(api_key=os.environ["GEMINI_API_KEY"])
 prompt = 'भारत में YouTube पर ट्रेंडिंग हो रहे किसी रोचक विषय पर 35 सेकंड की हिंदी Shorts स्क्रिप्ट लिखो। केवल JSON दो: {"title": "टाइटल #shorts", "script": "हिंदी स्क्रिप्ट बिना इमोजी के", "thumb": "3 शब्द"}'
-res = genai.GenerativeModel("gemini-2.5-flash").generate_content(prompt).text.strip("`json\n ")
+res = genai.GenerativeModel("gemini-3.8-flash").generate_content(prompt).text.strip("`json\n ")
 data = json.loads(res)
 
 asyncio.run(edge_tts.Communicate(data["script"], "hi-IN-MadhurNeural").save("voice.mp3"))
